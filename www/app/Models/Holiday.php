@@ -18,7 +18,12 @@ class Holiday extends Model
      */
 	protected $table = 'holiday';
     protected $fillable = ['country', 'dayofweek', 'month', 'name', 'day', 'year', 'date_created', 'date_updated'];	
-
+	/*
+	 * Constants of the model.
+	 */
+    const CREATED_AT = 'date_created';
+    const UPDATED_AT = 'date_updated';
+	
     /**
      * Get information of the country linked to this holiday
      * 

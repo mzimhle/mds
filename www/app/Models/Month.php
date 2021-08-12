@@ -12,5 +12,5 @@ class Month extends Model
      * Properties of the month table
      */
 	protected $table = 'month';
-    protected $fillable = ['name', 'date_created', 'date_updated'];	
+    protected $fillable = ['name', 'sequence', 'date_created', 'date_updated'];	
 }
