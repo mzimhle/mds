@@ -19,5 +19,5 @@ Route::group(['domain' => '127.0.0.1'], function()
 	// Dashboard pages defined
 	Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 	Route::get('/paginate', [DashboardController::class, 'paginate'])->name('dashboard.paginate');
-	Route::post('/pdf', [DashboardController::class, 'pdf'])->name('dashboard.pdf');	
+	Route::get('/pdf', [DashboardController::class, 'pdf'])->name('dashboard.pdf');	
 });

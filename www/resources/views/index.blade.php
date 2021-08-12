@@ -75,6 +75,11 @@ $(function () {
     });
 });
 
+function getPDF() {
+	window.location.href = "/pdf?country="+$('#country').val()+"&year="+$('#year').val()+"&month="+$('#month').val();
+	return false;
+}
+
 function getData() {
 	if(typeof table != 'undefined') {
 		table.destroy();

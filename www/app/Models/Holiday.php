@@ -56,7 +56,7 @@ class Holiday extends Model
      * 
      * @return Collection
      */
-    public static function paginate(int $country, int $year, int $month = null) {
+    public static function filtered(int $country, int $year, int $month = null) {
 		// Sort out filters
 		$where		= array();
 		$where[]	= ['country', '=', $country];
