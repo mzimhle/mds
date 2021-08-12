@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+// Controllers
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['domain' => '127.0.0.1'], function()
+{
+	// Dashboard pages defined
+	Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+	Route::get('/paginate', [DashboardController::class, 'paginate'])->name('dashboard.paginate');
+	Route::post('/pdf', [DashboardController::class, 'pdf'])->name('dashboard.pdf');	
 });

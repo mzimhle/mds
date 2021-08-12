@@ -29,7 +29,7 @@ class Holiday extends Model
      * 
      * @return App\Models\Country
      */
-    public function country() {
+    public function getCountry() {
         return $this->hasOne(Country::class, 'id', 'country');
     }
 
@@ -38,7 +38,7 @@ class Holiday extends Model
      * 
      * @return App\Models\DayOfWeek
      */
-    public function dayOfWeek() {
+    public function getDayOfWeek() {
         return $this->hasOne(DayOfWeek::class, 'id', 'dayofweek');
     }
 
@@ -47,7 +47,7 @@ class Holiday extends Model
      * 
      * @return App\Models\Month
      */
-    public function month() {
+    public function getMonth() {
         return $this->hasOne(Month::class, 'id', 'month');
     }
 }
