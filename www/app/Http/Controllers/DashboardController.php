@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DataTables;
 use App\Models\Holiday;
+use App\Models\Month;
+use App\Models\Country;
 
 class DashboardController extends Controller
 {
@@ -15,7 +17,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('index');
+		// Get models to display in the drop down.
+		$months = Month::all();
+		$countries = Country::all();
+		// Show the view.
+        return view('index', compact('months', 'countries'));
     }
     /**
      * Method to get the data for dates.
@@ -23,7 +29,7 @@ class DashboardController extends Controller
     public function paginate(Request $request)
     {
         if ($request->ajax()) {
-            $data = Holiday::latest()->get();
+            $data = Holiday::paginate($request->input('country'), $request->input('year'), ($request->input('month') == '' ? null : (int)$request->input('month')));
             return Datatables::of($data)
                 ->addColumn('name', function($row) {
                     return $row->name;

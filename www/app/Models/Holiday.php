@@ -50,4 +50,21 @@ class Holiday extends Model
     public function getMonth() {
         return $this->hasOne(Month::class, 'id', 'month');
     }
+
+    /**
+     * Get all data based on country, year and month
+     * 
+     * @return Collection
+     */
+    public static function paginate(int $country, int $year, int $month = null) {
+		// Sort out filters
+		$where		= array();
+		$where[]	= ['country', '=', $country];
+		$where[]	= ['year', '=', $year];
+		if($month !== null) {
+			$where[]	= ['month', '=', $month];
+		}
+		// Get the data
+		return self::where($where)->get();
+    }
 }
